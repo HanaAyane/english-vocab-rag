@@ -51,4 +51,4 @@ demo = gr.Interface(
 )
 
 if __name__ == "__main__":
-    demo.launch(server_name="127.0.0.1", server_port=7860)
+    demo.launch(server_name="127.0.0.1", server_port=int(os.getenv("VOCAB_RAG_PORT", "7860")))

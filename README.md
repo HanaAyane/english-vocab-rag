@@ -39,23 +39,25 @@
 
 ## 在 Windows 上运行
 
-在仓库目录打开 PowerShell。以下步骤使用 Python 3.12。
+安装 Python 3.12 后，在项目文件夹双击 [launch.bat](./launch.bat)。也可以在 PowerShell 中运行：
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-if (-not (Test-Path -LiteralPath data\vault)) {
-    New-Item -ItemType Directory -Path data -Force | Out-Null
-    Copy-Item -LiteralPath examples\vault -Destination data\vault -Recurse
-}
-.\.venv\Scripts\python.exe parse_vault.py
-.\.venv\Scripts\python.exe build_index.py
-.\.venv\Scripts\python.exe app.py
+.\launch.bat
 ```
 
-打开 [本地网页](http://127.0.0.1:7860/)，输入上面的任意问题。首次建索引时会下载多语言 MiniLM。检索在本机完成，直接显示释义、例句和出处。
+首次启动会在项目内创建 Python 环境并安装依赖。如果缺少索引，启动器会使用 `data/vault/` 里的词库构建，或在该目录不存在时复制随附的示例词库。首次用到向量模型时需要联网下载。之后会复用已有索引和模型缓存。
 
-**使用完整词库**时，请从作者渠道获取原始 Obsidian 笔记，使主题目录直接位于 `data/vault/` 下，然后重新执行解析和索引构建命令。已有示例词库时，先移走 `data/vault/` 中的 `01出行`、`02学习`、`03商业` 三个示例目录。仓库提供项目代码和自写演示笔记，原作者词库与生成的索引由使用者在本地准备。使用词库请遵循原版随附的版权声明。
+就绪后会自动打开 [本地网页](http://127.0.0.1:7860/)。使用期间请保持启动窗口开启，按 `Ctrl+C` 停止。若 7860 被其他程序占用，可运行 `.\launch.bat -Port 7861`。
+
+### 更换词库或更新笔记
+
+从作者渠道获取原始 Obsidian 笔记，使主题目录直接位于 `data/vault/` 下。用过示例词库时，请先移走 `01出行`、`02学习`、`03商业` 三个示例目录。停止此前启动的知识库，再运行：
+
+```powershell
+.\launch.bat -Rebuild
+```
+
+仓库提供项目代码和自写演示笔记。原作者词库与生成的索引由使用者在本地准备，使用词库请遵循原版随附的版权声明。
 
 ### 可选接入 DeepSeek
 
@@ -98,7 +100,7 @@ LLM_MODEL=deepseek-flash
 | 新版 MiniLM + 词条规则 | 14/18 |
 | 新版混合检索 | 18/18 |
 
-用完整词库建立索引后，可用 `python eval_retrieval.py --require-all` 复跑。这组结果用于回归检查，生成答案的引用内容按案例核对。
+用完整词库建立索引后，可用 `.\.venv\Scripts\python.exe eval_retrieval.py --require-all` 复跑。这组结果用于回归检查，生成答案的引用内容按案例核对。
 
 ### 实测效果
 
