@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="446" viewBox="0 0 1200 446"
+     role="img" aria-labelledby="title desc">
+  <title id="title">英语词库的索引构建和查询流程</title>
+  <desc id="desc">本地 Obsidian 笔记按词条解析为索引。查询结合精确词头或短语匹配、BM25 和 MiniLM 向量检索，返回原文与出处，也可以交给 DeepSeek 整理。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M2 2l5 3-5 3" fill="none" stroke="#a15023" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="1198" height="444" rx="23" fill="#fffaf4" stroke="#e7dbcc" stroke-width="2"/>
+  <g font-family="Segoe UI, Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif">
+    <g fill="#873d17" font-size="29" font-weight="700">
+      <text x="48" y="54">构建索引</text>
+      <text x="48" y="260">查询词义</text>
+    </g>
+    <path d="M48 213h1104" stroke="#e7dbcc" stroke-width="2"/>
+    <g fill="#fff" stroke="#e7dbcc" stroke-width="2">
+      <rect x="48" y="74" width="320" height="111" rx="13"/>
+      <rect x="440" y="74" width="320" height="111" rx="13"/>
+      <rect x="832" y="74" width="320" height="111" rx="13"/>
+      <rect x="48" y="280" width="320" height="130" rx="13"/>
+      <rect x="440" y="280" width="320" height="130" rx="13"/>
+      <rect x="832" y="280" width="320" height="130" rx="13"/>
+    </g>
+    <g fill="none" stroke="#a15023" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M381 130h42"/>
+      <path d="M773 130h42"/>
+      <path d="M381 345h42"/>
+      <path d="M773 345h42"/>
+    </g>
+    <path d="M992 186v42H600v38" fill="none" stroke="#a15023" stroke-width="2.5"
+          stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+    <g fill="#25221e" font-size="30" font-weight="700">
+      <text x="70" y="119">Obsidian 笔记</text>
+      <text x="462" y="119">按词条解析</text>
+      <text x="854" y="119">本地索引</text>
+      <text x="70" y="331">输入问题</text>
+      <text x="462" y="331">混合检索</text>
+      <text x="854" y="331">返回义项与出处</text>
+    </g>
+    <g fill="#5b5044" font-size="23">
+      <text x="70" y="155">笔记正文与分类路径</text>
+      <text x="462" y="155">词性、释义、例句、来源</text>
+      <text x="854" y="155">词条、BM25 和向量</text>
+      <text x="70" y="368">查词、中文反查或辨析</text>
+      <text x="462" y="368">精确匹配、BM25、MiniLM</text>
+      <text x="854" y="368">可选用 DeepSeek 整理</text>
+    </g>
+  </g>
+</svg>
