@@ -1,0 +1,7 @@
+fastembed
+rank-bm25
+jieba
+gradio
+numpy
+requests
+python-dotenv
